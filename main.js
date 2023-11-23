@@ -6,6 +6,10 @@ function main() {
 	const container = document.querySelector('#scene-container');
 	world = new World(container);
 	world.start();
+	const stepBtn = document.getElementById('step-btn');
+	// stepBtn.addEventListener('click', () => {
+	// 	world.step();
+	// });
 }
 main();
 //
