@@ -1,15 +1,4 @@
-import {
-	BoxGeometry,
-	BufferGeometry,
-	ConeGeometry,
-	Group,
-	Line,
-	LineBasicMaterial,
-	MathUtils,
-	Mesh,
-	MeshStandardMaterial,
-	Vector3,
-} from 'three';
+import { ConeGeometry, Group, MathUtils, Mesh, MeshStandardMaterial, Vector3 } from 'three';
 function createBoids(nbBoids = 10) {
 	const boids = new Group();
 

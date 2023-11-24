@@ -25,13 +25,5 @@ class Loop {
 			object.tick(delta);
 		}
 	}
-	step() {
-		const delta = 16;
-		for (const object of this.updatables) {
-			object.tick(delta);
-		}
-
-		this.renderer.render(this.scene, this.camera);
-	}
 }
 export { Loop };

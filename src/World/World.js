@@ -1,5 +1,4 @@
 import { createCamera } from './components/camera';
-import { createCube } from './components/cube';
 import { createLights } from './components/lights';
 import { createScene } from './components/scene';
 import { Resizer } from './systems/Resizer';
@@ -12,7 +11,6 @@ class World {
 	#controls;
 	#scene;
 	#renderer;
-	#cube;
 	#loop;
 	constructor(container) {
 		this.#camera = createCamera();
@@ -20,20 +18,16 @@ class World {
 		this.#renderer = createRenderer();
 		this.#controls = new OrbitControls(this.#camera, this.#renderer.domElement);
 
-		this.#cube = [];
 		this.#loop = new Loop(this.#camera, this.#scene, this.#renderer);
 		container.append(this.#renderer.domElement);
 
-		const cube = createCube();
 		const light = createLights();
 
 		const boid = createBoids(500);
 
-		this.#loop.updatables.push(cube);
 		this.#loop.updatables.push(boid);
 
-		this.#cube.push(cube);
-		this.#scene.add(cube, light, boid);
+		this.#scene.add(light, boid);
 
 		const resizer = new Resizer(container, this.#camera, this.#renderer);
 	}
@@ -45,9 +39,6 @@ class World {
 	}
 	stop() {
 		this.#loop.stop();
-	}
-	step() {
-		this.#loop.step();
 	}
 }
 export { World };
