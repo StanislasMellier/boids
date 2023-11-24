@@ -6,6 +6,7 @@ import { createRenderer } from './systems/renderer';
 import { Loop } from './systems/Loop';
 import { createBoids } from './components/boids';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { BoxHelper } from 'three';
 class World {
 	#camera;
 	#controls;
@@ -23,11 +24,12 @@ class World {
 
 		const light = createLights();
 
-		const boid = createBoids(500);
+		const boid = createBoids(100);
+		const box = new BoxHelper(boid, 'black');
 
 		this.#loop.updatables.push(boid);
 
-		this.#scene.add(light, boid);
+		this.#scene.add(light, boid, box);
 
 		const resizer = new Resizer(container, this.#camera, this.#renderer);
 	}

@@ -1,8 +1,16 @@
-import { ConeGeometry, Group, MathUtils, Mesh, MeshStandardMaterial, Vector3 } from 'three';
+import {
+	BoxGeometry,
+	ConeGeometry,
+	Group,
+	MathUtils,
+	Mesh,
+	MeshStandardMaterial,
+	Vector3,
+} from 'three';
 function createBoids(nbBoids = 10) {
 	const boids = new Group();
 
-	boids.BOX_SIZE = 150;
+	boids.BOX_SIZE = 100;
 	boids.RANDOM_START_VELOCITY = boids.BOX_SIZE / 10;
 	boids.VISION_RANGE = 30;
 	boids.PROTECTED_RANGE = 5;
@@ -41,6 +49,7 @@ function createBoids(nbBoids = 10) {
 			boid.position.add(boid.velocity.clone().multiplyScalar(delta));
 		});
 	};
+	console.log(boids);
 	return boids;
 }
 function detectEdge(boid, BOX_SIZE) {
