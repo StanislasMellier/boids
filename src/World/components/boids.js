@@ -7,9 +7,11 @@ import {
 	MeshStandardMaterial,
 	Vector3,
 } from 'three';
-function createBoids(nbBoids = 10) {
-	const boids = new Group();
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 
+function createBoids(nbBoids = 10, enableGUi = true) {
+	const boids = new Group();
+	const gui = new GUI();
 	boids.BOX_SIZE = 100;
 	boids.RANDOM_START_VELOCITY = boids.BOX_SIZE / 10;
 	boids.VISION_RANGE = 30;
@@ -18,6 +20,12 @@ function createBoids(nbBoids = 10) {
 	boids.MATCHING_FACTOR = 0.05;
 	boids.CENTERING_FACTOR = 0.005;
 
+	gui.add(boids, 'BOX_SIZE');
+	gui.add(boids, 'VISION_RANGE');
+	gui.add(boids, 'PROTECTED_RANGE');
+	gui.add(boids, 'AVOID_FACTOR');
+	gui.add(boids, 'MATCHING_FACTOR');
+	gui.add(boids, 'CENTERING_FACTOR');
 	const geometry = new ConeGeometry(1, 3, 5);
 	const material = new MeshStandardMaterial({ color: 'green' });
 	geometry.rotateX(MathUtils.degToRad(90));

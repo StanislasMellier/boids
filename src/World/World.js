@@ -18,7 +18,6 @@ class World {
 		this.#scene = createScene();
 		this.#renderer = createRenderer();
 		this.#controls = new OrbitControls(this.#camera, this.#renderer.domElement);
-
 		this.#loop = new Loop(this.#camera, this.#scene, this.#renderer);
 		container.append(this.#renderer.domElement);
 
